@@ -125,9 +125,8 @@ class refillableMarker extends Marker {
     }
     refill(inputNumber) {
         if (this.inkAmount < 100){
-            result = this.inkAmount + inputNumber; 
+            this.inkAmount += inputNumber; 
         }
-        return result; 
     }
 }
 
