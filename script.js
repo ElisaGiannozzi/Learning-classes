@@ -87,3 +87,49 @@ let bird1 = new Bird('cat', 2);
 
 bird1.eat(); 
 bird1.fly(); 
+
+
+/*Create a class that describes a regular marker. It should contain the following components: 
+1.A field that stores the color of the marker;
+2.A field that stores the amount of ink in the marker (in percentage);
+3.A method for input. The method takes a string and displays the text in the given color on the webpage. 
+The text appears as long as the marker has ink. One non-space character takes 0,5% ink from the marker.
+4.Create a class that describes a refillable marker. The class should inherit from the regular marker. 
+Also add a method that refills the marker. Demonstrate the work of these methods.*/
+
+class Marker {
+    constructor(markerColor, inkAmount) {
+        this.markerColor = markerColor; 
+        this.inkAmount = inkAmount; 
+    }
+    input(inputString) {
+    let outputString = ""; 
+    for(let i = 0; i < inputString.length && this.inkAmount > 0; i++){
+        if (inputString[i] != " ") {
+            this.inkAmount = this.inkAmount - 0.5; 
+        }
+        outputString += inputString[i]; 
+    }
+    console.log(this.inkAmount); 
+    return `<div><p style="color:${this.markerColor}">${outputString}</p></div>` ; 
+}
+}
+
+let marker1 = new Marker('green', 10); 
+document.write(marker1.input('I am sitting in front of the computer and drinking coffee')); 
+
+
+class refillableMarker extends Marker {
+    constructor(markerColor, inkAmount) {
+        super(markerColor, inkAmount); 
+    }
+    refill(inputNumber) {
+        if (this.inkAmount < 100){
+            result = this.inkAmount + inputNumber; 
+        }
+        return result; 
+    }
+}
+
+let marker2 = new Marker('blue', 10); 
+console.log(marker2.refill(20)); 
