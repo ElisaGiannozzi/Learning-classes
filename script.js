@@ -130,5 +130,5 @@ class refillableMarker extends Marker {
     }
 }
 
-let marker2 = new Marker('blue', 10); 
+let marker2 = new refillableMarker('blue', 10); 
 console.log(marker2.refill(20)); 
